@@ -1,4 +1,6 @@
 ## Hi there 👋
+My name is Biniam Abu, and I'm a  3rd Year Computer Science student from 🇪🇹.
+ I’m currently learning backend. 
 
 <!--
 **bina10-coder/bina10-coder** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
