@@ -1,4 +1,4 @@
-<h1 align="center">👋Hi, I'm Biniam! Beginner Backend Developer.  </h1>
+<h1 align="center">Hi There👋, I'm Biniam! Beginner Backend Developer.  </h1>
 
 <h4>I'm a passionate beginner backend developer who loves building server-side applications and learning new technologies.<br>I enjoy solving probelms,writing clean code, and improving my skills every day.</h4>
 
