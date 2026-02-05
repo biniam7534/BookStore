@@ -18,7 +18,7 @@ const Navbar = () => {
                         <span className="icon-bar blue"></span>
                         <span className="icon-bar yellow"></span>
                     </div>
-                    <span className="logo-text">BOOKSHELL</span>
+                    <span className="logo-text">BOOKSTORE</span>
                 </div>
 
                 {/* Desktop Menu */}

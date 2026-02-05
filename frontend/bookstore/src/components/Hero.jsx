@@ -12,8 +12,7 @@ const Hero = () => {
                         Reading Experience
                     </h1>
                     <p className="hero-description">
-                        Curated knowledge journeys that challenge perceptions and inspire growth.
-                        Discover transformative content crafted for the modern intellect.
+                        A curated journey of ideas that expands perspective and fuels personal growth. Explore transformative content designed to challenge thinking and awaken the modern mind.
                     </p>
 
                     <a href="#explore" className="explore-link">Explore</a>
