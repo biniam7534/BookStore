@@ -1,0 +1,138 @@
+.orders-page {
+    background: linear-gradient(135deg, #4da9a1 0%, #316489 100%);
+    min-height: calc(100vh - 80px);
+    padding: 60px 0;
+    color: white;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    opacity: 1;
+    transform: translateX(-5px);
+}
+
+.orders-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.orders-table-wrapper {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #1e293b;
+}
+
+.orders-table thead tr {
+    background: linear-gradient(90deg, #1e3a8a 0%, #10b981 100%);
+    color: white;
+}
+
+.orders-table th {
+    padding: 20px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.orders-table td {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.orders-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.order-id {
+    font-weight: 700;
+}
+
+.order-amount {
+    font-weight: 600;
+}
+
+/* Badges */
+.badge {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-icon {
+    font-size: 1rem;
+}
+
+.payment-badge.online {
+    background-color: #f3e8ff;
+    color: #7c3aed;
+}
+
+.payment-badge.cod {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.status-badge.delivered {
+    background-color: #dcfce7;
+    color: #10b981;
+}
+
+.status-badge.processing {
+    background-color: #dbeafe;
+    color: #3b82f6;
+}
+
+.status-badge.shipped {
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+.view-btn {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .orders-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .orders-table {
+        min-width: 800px;
+    }
+}

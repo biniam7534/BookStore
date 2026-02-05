@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FiShoppingCart, FiUser, FiInfo, FiBook, FiMail, FiPackage } from 'react-icons/fi';
+import { FiShoppingCart, FiUser, FiInfo, FiBook, FiMail, FiPackage, FiMenu, FiX, FiHome } from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
         <nav className="navbar">
             <div className="container nav-content">
@@ -13,37 +18,91 @@ const Navbar = () => {
                         <span className="icon-bar blue"></span>
                         <span className="icon-bar yellow"></span>
                     </div>
-                    <span className="logo-text">BOOKSHELL</span>
+                    <span className="logo-text">BOOKSTORE</span>
                 </div>
 
-                <div className="nav-links">
+                {/* Desktop Menu */}
+                <div className="nav-links desktop-only">
                     <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                         Home
                     </NavLink>
                     <NavLink to="/about" className="nav-link">
-                        <FiInfo className="link-icon" /> About
+                        About
                     </NavLink>
                     <NavLink to="/books" className="nav-link">
-                        <FiBook className="link-icon" /> Books
+                        Books
                     </NavLink>
                     <NavLink to="/contact" className="nav-link">
-                        <FiMail className="link-icon" /> Contact
+                        Contact
                     </NavLink>
                     <NavLink to="/orders" className="nav-link">
-                        <FiPackage className="link-icon" /> My Orders
+                        My Orders
                     </NavLink>
                 </div>
 
                 <div className="nav-actions">
-                    <button className="icon-btn cart-btn">
-                        <FiShoppingCart />
-                        <span className="cart-badge">0</span>
+                    <div className="desktop-only action-btns">
+                        <button className="icon-btn cart-btn">
+                            <FiShoppingCart />
+                            <span className="cart-badge">1</span>
+                        </button>
+                        <button className="icon-btn profile-btn">
+                            <FiUser />
+                        </button>
+                    </div>
+                    <button className="menu-toggle mobile-only" onClick={toggleMenu}>
+                        <FiMenu />
                     </button>
-                    <button className="icon-btn profile-btn">
+                </div>
+            </div>
+
+            {/* Mobile Sidebar */}
+            <div className={`mobile-sidebar ${isMenuOpen ? 'open' : ''}`}>
+                <div className="sidebar-header">
+                    <div className="logo">
+                        <div className="logo-icon">
+                            <span className="icon-bar red"></span>
+                            <span className="icon-bar blue"></span>
+                            <span className="icon-bar yellow"></span>
+                        </div>
+                        <span className="logo-text">BOOKSHELL</span>
+                    </div>
+                    <button className="close-btn" onClick={closeMenu}>
+                        <FiX />
+                    </button>
+                </div>
+
+                <div className="sidebar-links">
+                    <NavLink to="/" className="sidebar-link" onClick={closeMenu}>
+                        <FiHome className="link-icon" /> Home
+                    </NavLink>
+                    <NavLink to="/about" className="sidebar-link" onClick={closeMenu}>
+                        <FiInfo className="link-icon" /> About
+                    </NavLink>
+                    <NavLink to="/books" className="sidebar-link" onClick={closeMenu}>
+                        <FiBook className="link-icon" /> Books
+                    </NavLink>
+                    <NavLink to="/contact" className="sidebar-link" onClick={closeMenu}>
+                        <FiMail className="link-icon" /> Contact
+                    </NavLink>
+                    <NavLink to="/orders" className="sidebar-link" onClick={closeMenu}>
+                        <FiPackage className="link-icon" /> My Orders
+                    </NavLink>
+                </div>
+
+                <div className="sidebar-footer">
+                    <button className="sidebar-action-btn">
+                        <div className="cart-icon-wrapper">
+                            <FiShoppingCart />
+                            <span className="cart-badge">1</span>
+                        </div>
+                    </button>
+                    <button className="sidebar-action-btn">
                         <FiUser />
                     </button>
                 </div>
             </div>
+            {isMenuOpen && <div className="sidebar-overlay" onClick={closeMenu}></div>}
         </nav>
     );
 };

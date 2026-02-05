@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Books from './pages/Books';
+import Contact from './pages/Contact';
+import Orders from './pages/Orders';
 import './App.css';
 
 const App = () => {
@@ -14,8 +16,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/books" element={<Books />} />
-        <Route path="/contact" element={<div className="container" style={{ padding: '100px 0' }}><h1>Contact Us</h1></div>} />
-        <Route path="/orders" element={<div className="container" style={{ padding: '100px 0' }}><h1>My Orders</h1></div>} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </div>
   );
