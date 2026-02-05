@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiAward, FiUsers, FiBookOpen, FiStar, FiTarget, FiEye } from 'react-icons/fi';
+import { FiAward, FiUsers, FiBookOpen, FiStar, FiTarget, FiEye, FiMapPin, FiClock } from 'react-icons/fi';
 import './About.css';
 
 const About = () => {
@@ -116,6 +116,51 @@ const About = () => {
                             <div className="member-info">
                                 <h3>Emma Williams</h3>
                                 <p>Lead Designer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="about-sanctuaries section-padding">
+                <div className="container">
+                    <h2 className="sanctuaries-title">Our Literary Sanctuaries</h2>
+                    <div className="team-divider"></div>
+                    <div className="sanctuaries-grid">
+                        <div className="sanctuary-card">
+                            <div className="sanctuary-image">
+                                <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&q=80&w=800" alt="New York" />
+                            </div>
+                            <div className="sanctuary-info">
+                                <h3><FiMapPin className="info-icon" /> New York</h3>
+                                <p><FiClock className="info-icon" /> 9AM - 9PM</p>
+                            </div>
+                        </div>
+                        <div className="sanctuary-card">
+                            <div className="sanctuary-image">
+                                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" alt="London" />
+                            </div>
+                            <div className="sanctuary-info">
+                                <h3><FiMapPin className="info-icon" /> London</h3>
+                                <p><FiClock className="info-icon" /> 8AM - 8PM</p>
+                            </div>
+                        </div>
+                        <div className="sanctuary-card">
+                            <div className="sanctuary-image">
+                                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800" alt="Tokyo" />
+                            </div>
+                            <div className="sanctuary-info">
+                                <h3><FiMapPin className="info-icon" /> Tokyo</h3>
+                                <p><FiClock className="info-icon" /> 10AM - 10PM</p>
+                            </div>
+                        </div>
+                        <div className="sanctuary-card">
+                            <div className="sanctuary-image">
+                                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=800" alt="Sydney" />
+                            </div>
+                            <div className="sanctuary-info">
+                                <h3><FiMapPin className="info-icon" /> Sydney</h3>
+                                <p><FiClock className="info-icon" /> 8AM - 8PM</p>
                             </div>
                         </div>
                     </div>

@@ -234,6 +234,95 @@
     font-weight: 500;
 }
 
+/* Sanctuaries Section */
+.sanctuaries-title {
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #1a4d4a;
+    margin-bottom: 20px;
+}
+
+.sanctuaries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.sanctuary-card {
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sanctuary-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.sanctuary-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.sanctuary-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.sanctuary-card:hover .sanctuary-image img {
+    transform: scale(1.1);
+}
+
+.sanctuary-info {
+    padding: 25px;
+}
+
+.sanctuary-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.sanctuary-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.info-icon {
+    color: #10b981;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 1200px) {
+    .sanctuaries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .sanctuaries-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sanctuaries-title {
+        font-size: 3rem;
+    }
+}
+
 @media (max-width: 1024px) {
     .about-title {
         font-size: 4rem;
