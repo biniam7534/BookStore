@@ -18,7 +18,7 @@ const Navbar = () => {
                         <span className="icon-bar blue"></span>
                         <span className="icon-bar yellow"></span>
                     </div>
-                    <span className="logo-text">BOOKSTORE</span>
+                    <span className="logo-text">BOOKSHELL</span>
                 </div>
 
                 {/* Desktop Menu */}
@@ -27,16 +27,16 @@ const Navbar = () => {
                         Home
                     </NavLink>
                     <NavLink to="/about" className="nav-link">
-                        About
+                        <FiInfo /> About
                     </NavLink>
                     <NavLink to="/books" className="nav-link">
-                        Books
+                        <FiBook /> Books
                     </NavLink>
                     <NavLink to="/contact" className="nav-link">
-                        Contact
+                        <FiMail /> Contact
                     </NavLink>
                     <NavLink to="/orders" className="nav-link">
-                        My Orders
+                        <FiPackage /> My Orders
                     </NavLink>
                 </div>
 

@@ -1,11 +1,16 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import FeaturedBooks from '../components/FeaturedBooks';
+import Categories from '../components/Categories';
+import Newsletter from '../components/Newsletter';
 
 const Home = () => {
     return (
         <main>
             <Hero />
-            {/* Other sections like Featured Books could go here */}
+            <FeaturedBooks />
+            <Categories />
+            <Newsletter />
         </main>
     );
 };
