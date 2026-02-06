@@ -1,6 +1,11 @@
 import React from 'react';
 import { FiAward, FiUsers, FiBookOpen, FiStar, FiTarget, FiEye, FiMapPin, FiClock } from 'react-icons/fi';
 import './About.css';
+import addisAbabaImg from '../assets/addis-ababa.jpg';
+import adamaImg from '../assets/adama.jpg';
+import mojoImg from '../assets/mojo.jpg';
+import hawasaImg from '../assets/hawasa.jpg';
+
 
 const About = () => {
     return (
@@ -129,38 +134,38 @@ const About = () => {
                     <div className="sanctuaries-grid">
                         <div className="sanctuary-card">
                             <div className="sanctuary-image">
-                                <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&q=80&w=800" alt="New York" />
+                                <img src={addisAbabaImg} alt="Addis Ababa" />
                             </div>
                             <div className="sanctuary-info">
-                                <h3><FiMapPin className="info-icon" /> New York</h3>
-                                <p><FiClock className="info-icon" /> 9AM - 9PM</p>
+                                <h3><FiMapPin className="info-icon" /> Addis Ababa</h3>
+                                <p><FiClock className="info-icon" /> 12PM - 1AM</p>
                             </div>
                         </div>
                         <div className="sanctuary-card">
                             <div className="sanctuary-image">
-                                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" alt="London" />
+                                <img src={adamaImg} alt="adama" />
                             </div>
                             <div className="sanctuary-info">
-                                <h3><FiMapPin className="info-icon" /> London</h3>
-                                <p><FiClock className="info-icon" /> 8AM - 8PM</p>
+                                <h3><FiMapPin className="info-icon" /> Adama</h3>
+                                <p><FiClock className="info-icon" /> 12AM - 8PM</p>
                             </div>
                         </div>
                         <div className="sanctuary-card">
                             <div className="sanctuary-image">
-                                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800" alt="Tokyo" />
+                                <img src={mojoImg} alt="mojo" />
                             </div>
                             <div className="sanctuary-info">
-                                <h3><FiMapPin className="info-icon" /> Tokyo</h3>
-                                <p><FiClock className="info-icon" /> 10AM - 10PM</p>
+                                <h3><FiMapPin className="info-icon" /> Mojo</h3>
+                                <p><FiClock className="info-icon" /> 12AM - 11PM</p>
                             </div>
                         </div>
                         <div className="sanctuary-card">
                             <div className="sanctuary-image">
-                                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=800" alt="Sydney" />
+                                <img src={hawasaImg} alt="Hawasa" />
                             </div>
                             <div className="sanctuary-info">
-                                <h3><FiMapPin className="info-icon" /> Sydney</h3>
-                                <p><FiClock className="info-icon" /> 8AM - 8PM</p>
+                                <h3><FiMapPin className="info-icon" /> Hawasa</h3>
+                                <p><FiClock className="info-icon" /> 1AM - 12PM</p>
                             </div>
                         </div>
                     </div>

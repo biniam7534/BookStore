@@ -10,21 +10,21 @@ const Orders = () => {
         {
             id: "#ORD-1001",
             date: "Oct 15, 2023",
-            amount: "₹1250.00",
+            amount: "ETB 1250.00",
             payment: "Online",
             status: "Delivered"
         },
         {
             id: "#ORD-1002",
             date: "Oct 20, 2023",
-            amount: "₹850.00",
+            amount: "ETB 850.00",
             payment: "Cash on Delivery",
             status: "Processing"
         },
         {
             id: "#ORD-1003",
             date: "Oct 22, 2023",
-            amount: "₹2100.00",
+            amount: "ETB 2100.00",
             payment: "Online",
             status: "Shipped"
         }
