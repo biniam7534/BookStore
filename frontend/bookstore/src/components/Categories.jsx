@@ -1,30 +1,101 @@
-import React from 'react';
-import { FiBookOpen, FiZap, FiTarget, FiHeart, FiCode, FiCompass } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { FiStar, FiShoppingCart, FiPlus, FiMinus } from 'react-icons/fi';
 import './Categories.css';
 
-const categories = [
-    { id: 1, name: "Fiction", icon: <FiBookOpen />, color: "#fef2f2", textColor: "#ef4444" },
-    { id: 2, name: "Science", icon: <FiZap />, color: "#eff6ff", textColor: "#3b82f6" },
-    { id: 3, name: "Psychology", icon: <FiTarget />, color: "#f0fdf4", textColor: "#22c55e" },
-    { id: 4, name: "Romance", icon: <FiHeart />, color: "#fdf2f8", textColor: "#ec4899" },
-    { id: 5, name: "Technology", icon: <FiCode />, color: "#f5f3ff", textColor: "#8b5cf6" },
-    { id: 6, name: "Travel", icon: <FiCompass />, color: "#fff7ed", textColor: "#f97316" },
+import harryPotterImg from '../assets/Book6.png';
+import hyggeImg from '../assets/Book2.png';
+import fiftyShadesImg from '../assets/Book1 (1).png';
+import twoTowersImg from '../assets/Book8.png';
+
+const favoriteBooks = [
+    {
+        id: 1,
+        title: "Harry Potter",
+        author: "J.K. Rowling",
+        price: 255.2,
+        rating: 4,
+        image: harryPotterImg,
+        hasQty: false
+    },
+    {
+        id: 2,
+        title: "Hygge",
+        author: "Meik Wiking",
+        price: 289.2,
+        rating: 4,
+        image: hyggeImg,
+        hasQty: true
+    },
+    {
+        id: 3,
+        title: "Fifty Shades Darker",
+        author: "E. L. James",
+        price: 325.2,
+        rating: 5,
+        image: fiftyShadesImg,
+        hasQty: false
+    },
+    {
+        id: 4,
+        title: "The Two Towers",
+        author: "J.R.R. Tolkien",
+        price: 425.2,
+        rating: 4,
+        image: twoTowersImg,
+        hasQty: false
+    }
 ];
 
 const Categories = () => {
+    const [quantities, setQuantities] = useState({ 2: 1 });
+
+    const updateQty = (id, delta) => {
+        setQuantities(prev => ({
+            ...prev,
+            [id]: Math.max(1, (prev[id] || 1) + delta)
+        }));
+    };
+
     return (
-        <section className="categories-section">
+        <section className="favorites-section">
             <div className="container">
                 <div className="section-header centered">
-                    <h2 className="section-title">Explore <span className="accent">Categories</span></h2>
-                    <p className="section-subtitle">Find your next favorite genre</p>
+                    <h2 className="section-title">Bookstore Favorites</h2>
+                    <div className="title-underline"></div>
                 </div>
 
-                <div className="categories-grid">
-                    {categories.map(cat => (
-                        <div key={cat.id} className="category-card" style={{ '--cat-bg': cat.color, '--cat-color': cat.textColor }}>
-                            <div className="category-icon">{cat.icon}</div>
-                            <h3 className="category-name">{cat.name}</h3>
+                <div className="favorites-grid">
+                    {favoriteBooks.map(book => (
+                        <div key={book.id} className="favorite-card">
+                            <div className="favorite-image-container">
+                                <img src={book.image} alt={book.title} className="favorite-image" />
+                                <div className="rating-pill">
+                                    {[...Array(5)].map((_, i) => (
+                                        <FiStar
+                                            key={i}
+                                            className={i < book.rating ? "star-icon" : "star-icon empty"}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="favorite-info">
+                                <h3 className="favorite-title">{book.title}</h3>
+                                <p className="favorite-author"><span>{book.author}</span> best author in this week</p>
+                                <div className="favorite-price">ETB {book.price.toFixed(1)}</div>
+
+                                {book.hasQty ? (
+                                    <div className="quantity-selector">
+                                        <button className="qty-btn" onClick={() => updateQty(book.id, -1)}><FiMinus /></button>
+                                        <span className="qty-value">{quantities[book.id]}</span>
+                                        <button className="qty-btn" onClick={() => updateQty(book.id, 1)}><FiPlus /></button>
+                                    </div>
+                                ) : (
+                                    <button className="add-to-cart-btn">
+                                        <FiShoppingCart /> Add to Cart
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>

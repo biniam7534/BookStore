@@ -2,31 +2,31 @@ import React from 'react';
 import { FiChevronLeft, FiChevronRight, FiStar, FiShoppingCart } from 'react-icons/fi';
 import './FeaturedBooks.css';
 
-import book1Img from '../assets/feker_esk_makaber.jpg';
-import book2Img from '../assets/the-beautiful.jpg';
+import book1Img from '../assets/HA1.png'; // Correct book cover for Twilight Fortress
+import book2Img from '../assets/HA2.png';
 import book3Img from '../assets/HB2.png';
-import book4Img from '../assets/HA2.png';
-import book5Img from '../assets/HA2.png';
-import book6Img from '../assets/HA3.png';
+import book4Img from '../assets/feker_esk_makaber.jpg';
+import book5Img from '../assets/the-beautiful.jpg';
+import book6Img from '../assets/cutting for stone.jpg';
 
 // Mock data based on the latest image provided
 const featuredBooks = [
     {
         id: 1,
-        title: "ፍቅር እስከ መቃብር",
-        author: "ሀዲስ አለማየሁ",
-        description: "A legendary Ethiopian novel exploring love, class struggle, and destiny in Addis Ababa society.",
-        price: "180.00",
+        title: "Twilight Fortress",
+        author: "Gregory Barrett",
+        description: "Jane McLane's latest masterpiece challenges conventional storytelling. Explore transformative narratives that...",
+        price: "190.99",
         rating: 5,
         bgColor: "#dae9f2", // Light blue
         image: book1Img
     },
     {
         id: 2,
-        title: "The Beautiful Things That Heaven Bears",
-        author: "Dinaw Mengestu",
-        description: "A powerful immigrant story set in Washington D.C., reflecting Ethiopian diaspora life.",
-        price: "220.00",
+        title: "The Silent Echo",
+        author: "Sarah Mitchell",
+        description: "Jane McLane's latest masterpiece challenges conventional storytelling. Explore transformative narratives that...",
+        price: "220.99",
         rating: 5,
         bgColor: "#fef3d5", // Light yellow/orange
         image: book2Img
@@ -43,29 +43,29 @@ const featuredBooks = [
     },
     {
         id: 4,
-        title: "The Silent Echo",
-        author: "Sarah Mitchell",
-        description: "Jane McLane's latest masterpiece challenges conventional storytelling. Explore transformative narratives that...",
-        price: "209.00",
+        title: "ፍቅር እስከ መቃብር",
+        author: "ሀዲስ አለማየሁ",
+        description: "A legendary Ethiopian novel exploring love, class struggle, and destiny in Addis Ababa society.",
+        price: "180.00",
         rating: 5,
         bgColor: "#f2e6d8",
         image: book4Img
     },
     {
         id: 5,
-        title: "Atomic Habits",
-        author: "James Clear",
-        description: "Small changes, remarkable results. Build better habits and transform your life.",
-        price: "209.00",
+        title: "The Beautiful Things That Heaven Bears",
+        author: "Dinaw Mengestu",
+        description: "A powerful immigrant story set in Washington D.C., reflecting Ethiopian diaspora life.",
+        price: "215.00",
         rating: 5,
         bgColor: "#ebdcf2", // Light purple
         image: book5Img
     },
     {
         id: 6,
-        title: "Thinking, Fast and Slow",
-        author: "Daniel Kahneman",
-        description: "A groundbreaking exploration of how the mind works, revealing the biases, instincts, and hidden systems.",
+        title: "Cutting for Stone",
+        author: "Abraham Verghese",
+        description: "A sweeping saga of twin brothers born from a secret union between an Indian nun and a British surgeon in Ethiopia.",
         price: "199.00",
         rating: 5,
         bgColor: "#f2f7d5",
@@ -102,7 +102,7 @@ const FeaturedBooks = () => {
                     {featuredBooks.map(book => (
                         <div
                             key={book.id}
-                            className="book-card"
+                            className="featured-card"
                             style={{ backgroundColor: book.bgColor }}
                         >
                             <div className="card-top">
