@@ -1,68 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FiSearch, FiFilter, FiChevronDown } from 'react-icons/fi';
 import './Books.css';
 
 const Books = () => {
+    const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const books = [
-        {
-            id: 1,
-            title: "Literary Foundations",
-            author: "Stacker",
-            image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400",
-            category: "Classic"
-        },
-        {
-            id: 2,
-            title: "How Innovation Works",
-            author: "Matt Ridley",
-            image: "https://m.media-amazon.com/images/I/81L6E0BOH3L.jpg",
-            category: "Business"
-        },
-        {
-            id: 3,
-            title: "Emma Elliot",
-            author: "Author Name",
-            image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400",
-            category: "Fiction"
-        },
-        {
-            id: 4,
-            title: "Pages of Time",
-            author: "History Maker",
-            image: "https://images.unsplash.com/photo-1476275466078-402737450400?auto=format&fit=crop&q=80&w=400",
-            category: "History"
-        },
-        {
-            id: 5,
-            title: "Modern Design",
-            author: "Creative Mind",
-            image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400",
-            category: "Art"
-        },
-        {
-            id: 6,
-            title: "Future Tech",
-            author: "AI Explorer",
-            image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=400",
-            category: "Technology"
-        },
-        {
-            id: 7,
-            title: "Nature's Whispers",
-            author: "Eco Warrior",
-            image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=400",
-            category: "Science"
-        },
-        {
-            id: 8,
-            title: "The Art of War",
-            author: "Sun Tzu",
-            image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80&w=400",
-            category: "Strategy"
-        }
-    ];
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/books');
+                setBooks(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching books:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchBooks();
+    }, []);
+
+    const filteredBooks = books.filter(book =>
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (loading) {
+        return <div className="loading">Loading books...</div>;
+    }
 
     return (
         <div className="books-page">
@@ -95,7 +63,7 @@ const Books = () => {
                                 </div>
                             </div>
                             <div className="results-count">
-                                Showing 16 results
+                                Showing {filteredBooks.length} results
                             </div>
                         </div>
                     </div>
@@ -104,8 +72,8 @@ const Books = () => {
 
             <section className="books-grid-section container">
                 <div className="books-grid">
-                    {books.map(book => (
-                        <div key={book.id} className="book-card scale-in">
+                    {filteredBooks.map(book => (
+                        <div key={book._id || book.id} className="book-card scale-in">
                             <div className="book-image">
                                 <img src={book.image} alt={book.title} />
                                 <div className="book-overlay">

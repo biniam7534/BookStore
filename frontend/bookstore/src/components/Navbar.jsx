@@ -94,7 +94,7 @@ const Navbar = () => {
                     <button className="sidebar-action-btn">
                         <div className="cart-icon-wrapper">
                             <FiShoppingCart />
-                            <span className="cart-badge">1</span>
+                            <span className="cart-badge"></span>
                         </div>
                     </button>
                     <button className="sidebar-action-btn">
