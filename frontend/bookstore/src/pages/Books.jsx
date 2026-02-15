@@ -1,36 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { FiSearch, FiFilter, FiChevronDown } from 'react-icons/fi';
 import './Books.css';
 
+import adfressImg from '../assets/adfress.jpg';
+import fekerEskMakaberImg from '../assets/feker_esk_makaber.jpg';
+import imagePng from '../assets/image.png';
+import oromiaImg from '../assets/oromia.jpg';
+import ha2Img from '../assets/HA2.png';
+import lionOfGazeImg from '../assets/lion of gaze.jpg';
+import theBeautifulImg from '../assets/the-beautiful.jpg';
+import burkaZemetaImg from '../assets/burka zemeta.jpg';
+
 const Books = () => {
-    const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/books');
-                setBooks(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching books:', error);
-                setLoading(false);
-            }
-        };
-
-        fetchBooks();
-    }, []);
-
-    const filteredBooks = books.filter(book =>
-        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    if (loading) {
-        return <div className="loading">Loading books...</div>;
-    }
+    const books = [
+        {
+            id: 1,
+            title: "Literary Foundations",
+            author: "Stacker",
+            image: adfressImg,
+            category: "Classic"
+        },
+        {
+            id: 2,
+            title: "How Innovation Works",
+            author: "Matt Ridley",
+            image: fekerEskMakaberImg,
+            category: "Business"
+        },
+        {
+            id: 3,
+            title: "Emma Elliot",
+            author: "Author Name",
+            image: imagePng,
+            category: "Fiction"
+        },
+        {
+            id: 4,
+            title: "Pages of Time",
+            author: "History Maker",
+            image: oromiaImg,
+            category: "History"
+        },
+        {
+            id: 5,
+            title: "Modern Design",
+            author: "Creative Mind",
+            image: ha2Img,
+            category: "Art"
+        },
+        {
+            id: 6,
+            title: "Future Tech",
+            author: "AI Explorer",
+            image: lionOfGazeImg,
+            category: "Technology"
+        },
+        {
+            id: 7,
+            title: "Nature's Whispers",
+            author: "Eco Warrior",
+            image: theBeautifulImg,
+            category: "Science"
+        },
+        {
+            id: 8,
+            title: "The Art of War",
+            author: "Sun Tzu",
+            image: burkaZemetaImg,
+            category: "Strategy"
+        }
+    ];
 
     return (
         <div className="books-page">
@@ -63,7 +104,7 @@ const Books = () => {
                                 </div>
                             </div>
                             <div className="results-count">
-                                Showing {filteredBooks.length} results
+                                Showing 16 results
                             </div>
                         </div>
                     </div>
@@ -72,8 +113,8 @@ const Books = () => {
 
             <section className="books-grid-section container">
                 <div className="books-grid">
-                    {filteredBooks.map(book => (
-                        <div key={book._id || book.id} className="book-card scale-in">
+                    {books.map(book => (
+                        <div key={book.id} className="book-card scale-in">
                             <div className="book-image">
                                 <img src={book.image} alt={book.title} />
                                 <div className="book-overlay">

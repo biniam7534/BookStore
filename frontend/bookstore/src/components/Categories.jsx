@@ -1,27 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { FiStar, FiShoppingCart, FiPlus, FiMinus } from 'react-icons/fi';
 import './Categories.css';
 
+import harryPotterImg from '../assets/Book5.png';
+import hyggeImg from '../assets/Book2.png';
+import fiftyShadesImg from '../assets/Book1 (1).png';
+import twoTowersImg from '../assets/Book8.png';
+
+const favoriteBooks = [
+    {
+        id: 1,
+        title: "Harry Potter",
+        author: "J.K. Rowling",
+        price: 255.2,
+        rating: 4,
+        image: harryPotterImg,
+        hasQty: false
+    },
+    {
+        id: 2,
+        title: "Hygge",
+        author: "Meik Wiking",
+        price: 289.2,
+        rating: 4,
+        image: hyggeImg,
+        hasQty: true
+    },
+    {
+        id: 3,
+        title: "Fifty Shades Darker",
+        author: "E. L. James",
+        price: 325.2,
+        rating: 5,
+        image: fiftyShadesImg,
+        hasQty: false
+    },
+    {
+        id: 4,
+        title: "The Two Towers",
+        author: "J.R.R. Tolkien",
+        price: 425.2,
+        rating: 4,
+        image: twoTowersImg,
+        hasQty: false
+    }
+];
+
 const Categories = () => {
-    const [favoriteBooks, setFavoriteBooks] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [quantities, setQuantities] = useState({});
-
-    useEffect(() => {
-        const fetchFavorites = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/books/favorites');
-                setFavoriteBooks(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching favorites:', error);
-                setLoading(false);
-            }
-        };
-
-        fetchFavorites();
-    }, []);
+    const [quantities, setQuantities] = useState({ 2: 1 });
 
     const updateQty = (id, delta) => {
         setQuantities(prev => ({
@@ -29,10 +55,6 @@ const Categories = () => {
             [id]: Math.max(1, (prev[id] || 1) + delta)
         }));
     };
-
-    if (loading) {
-        return <div className="loading">Loading favorite books...</div>;
-    }
 
     return (
         <section className="favorites-section">
@@ -43,43 +65,39 @@ const Categories = () => {
                 </div>
 
                 <div className="favorites-grid">
-                    {favoriteBooks.length > 0 ? (
-                        favoriteBooks.map(book => (
-                            <div key={book._id || book.id} className="favorite-card">
-                                <div className="favorite-image-container">
-                                    <img src={book.image} alt={book.title} className="favorite-image" />
-                                    <div className="rating-pill">
-                                        {[...Array(5)].map((_, i) => (
-                                            <FiStar
-                                                key={i}
-                                                className={i < (book.rating || 5) ? "star-icon" : "star-icon empty"}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="favorite-info">
-                                    <h3 className="favorite-title">{book.title}</h3>
-                                    <p className="favorite-author"><span>{book.author}</span> best author in this week</p>
-                                    <div className="favorite-price">ETB {typeof book.price === 'number' ? book.price.toFixed(1) : book.price}</div>
-
-                                    {book.hasQty ? (
-                                        <div className="quantity-selector">
-                                            <button className="qty-btn" onClick={() => updateQty(book._id || book.id, -1)}><FiMinus /></button>
-                                            <span className="qty-value">{quantities[book._id || book.id] || 1}</span>
-                                            <button className="qty-btn" onClick={() => updateQty(book._id || book.id, 1)}><FiPlus /></button>
-                                        </div>
-                                    ) : (
-                                        <button className="add-to-cart-btn">
-                                            <FiShoppingCart /> Add to Cart
-                                        </button>
-                                    )}
+                    {favoriteBooks.map(book => (
+                        <div key={book.id} className="favorite-card">
+                            <div className="favorite-image-container">
+                                <img src={book.image} alt={book.title} className="favorite-image" />
+                                <div className="rating-pill">
+                                    {[...Array(5)].map((_, i) => (
+                                        <FiStar
+                                            key={i}
+                                            className={i < book.rating ? "star-icon" : "star-icon empty"}
+                                        />
+                                    ))}
                                 </div>
                             </div>
-                        ))
-                    ) : (
-                        <p className="no-books">No favorite books found.</p>
-                    )}
+
+                            <div className="favorite-info">
+                                <h3 className="favorite-title">{book.title}</h3>
+                                <p className="favorite-author"><span>{book.author}</span> best author in this week</p>
+                                <div className="favorite-price">ETB {book.price.toFixed(1)}</div>
+
+                                {book.hasQty ? (
+                                    <div className="quantity-selector">
+                                        <button className="qty-btn" onClick={() => updateQty(book.id, -1)}><FiMinus /></button>
+                                        <span className="qty-value">{quantities[book.id]}</span>
+                                        <button className="qty-btn" onClick={() => updateQty(book.id, 1)}><FiPlus /></button>
+                                    </div>
+                                ) : (
+                                    <button className="add-to-cart-btn">
+                                        <FiShoppingCart /> Add to Cart
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
