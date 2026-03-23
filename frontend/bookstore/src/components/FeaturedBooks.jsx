@@ -2,20 +2,20 @@ import React from 'react';
 import { FiChevronLeft, FiChevronRight, FiStar, FiShoppingCart } from 'react-icons/fi';
 import './FeaturedBooks.css';
 
-import book1Img from '../assets/HA1.png'; // Correct book cover for Twilight Fortress
-import book2Img from '../assets/HA2.png';
+import book1Img from '../assets/download.png'; // Correct book cover for Twilight Fortress
+import book2Img from '../assets/hacker3).png';
 import book3Img from '../assets/HB3.png';
 import book4Img from '../assets/feker_esk_makaber.jpg';
-import book5Img from '../assets/the-beautiful.jpg';
+import book5Img from '../assets/millioner.png';
 import book6Img from '../assets/cutting for stone.jpg';
 
 // Mock data based on the latest image provided
 const featuredBooks = [
     {
         id: 1,
-        title: "Twilight Fortress",
-        author: "Gregory Barrett",
-        description: "Jane McLane's latest masterpiece challenges conventional storytelling. Explore transformative narratives that...",
+        title: "The Sigma Male Bible: An Ultimate Guide To The Lone Wolf",
+        author: "Bud Watson",
+        description: "A guide exploring the Sigma male personality type, focusing on independence, self-reliance, and confidence outside traditional social hierarchies.",
         price: "190.99",
         rating: 5,
         bgColor: "#dae9f2", // Light blue
@@ -23,9 +23,9 @@ const featuredBooks = [
     },
     {
         id: 2,
-        title: "The Silent Echo",
-        author: "Sarah Mitchell",
-        description: "Jane McLane's latest masterpiece challenges conventional storytelling. Explore transformative narratives that...",
+        title: "Building Real-World Hacker Skills from Scratch",
+        author: "Kline Thornton",
+        description: "A practical beginner-friendly guide to cybersecurity that focuses on hands-on learning. It teaches penetration testing, Wi-Fi hacking, Linux, and scripting using Python, Bash, and PowerShell while helping readers build real-world hacker skills.",
         price: "220.99",
         rating: 5,
         bgColor: "#fef3d5", // Light yellow/orange
@@ -53,9 +53,9 @@ const featuredBooks = [
     },
     {
         id: 5,
-        title: "The Beautiful Things That Heaven Bears",
-        author: "Dinaw Mengestu",
-        description: "A powerful immigrant story set in Washington D.C., reflecting Ethiopian diaspora life.",
+        title: "The Millionaire Booklet: How to Get Super Rich",
+        author: "Grant Cardone",
+        description: "A short, powerful guide that simplifies wealth creation into actionable steps. It focuses on mindset, increasing income, and building multiple streams of revenue to achieve financial success.",
         price: "215.00",
         rating: 5,
         bgColor: "#ebdcf2", // Light purple
@@ -129,7 +129,7 @@ const FeaturedBooks = () => {
                                     </button>
                                 </div>
                                 <div className="book-image-frame">
-                                    <img src={book.image} alt={book.title} className="book-img-inner" />
+                                    <img src={`${book.image}?t=${new Date().getTime()}`} alt={book.title} className="book-img-inner" />
                                 </div>
                             </div>
                         </div>
