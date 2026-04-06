@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FiStar, FiShoppingCart, FiPlus, FiMinus } from 'react-icons/fi';
+import { useCart } from '../context/CartContext';
 import './Categories.css';
 
 import harryPotterImg from '../assets/millioner.png';
@@ -48,6 +49,7 @@ const favoriteBooks = [
 
 const Categories = () => {
     const [quantities, setQuantities] = useState({ 2: 1 });
+    const { addToCart } = useCart();
 
     const updateQty = (id, delta) => {
         setQuantities(prev => ({
@@ -85,13 +87,17 @@ const Categories = () => {
                                 <div className="favorite-price">ETB {book.price.toFixed(1)}</div>
 
                                 {book.hasQty ? (
-                                    <div className="quantity-selector">
-                                        <button className="qty-btn" onClick={() => updateQty(book.id, -1)}><FiMinus /></button>
-                                        <span className="qty-value">{quantities[book.id]}</span>
-                                        <button className="qty-btn" onClick={() => updateQty(book.id, 1)}><FiPlus /></button>
+                                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                                        <button className="add-to-cart-btn" style={{ padding: '0.6rem 1rem' }} onClick={() => {
+                                            const qty = quantities[book.id] || 1;
+                                            for (let i = 0; i < qty; i++) addToCart(book);
+                                            alert(`Added ${qty} item(s) to cart!`);
+                                        }}>
+                                            <FiShoppingCart /> Add
+                                        </button>
                                     </div>
                                 ) : (
-                                    <button className="add-to-cart-btn">
+                                    <button className="add-to-cart-btn" onClick={() => { addToCart(book); alert('Added to cart!'); }}>
                                         <FiShoppingCart /> Add to Cart
                                     </button>
                                 )}

@@ -137,7 +137,7 @@ const Books = () => {
         {
             id: 13,
             title: "The Sigma Male Bible",
-            author: "Rud Waston",
+            author: "Bud Watson",
             image: downloadImg,
             category: "Personal development"
         },
