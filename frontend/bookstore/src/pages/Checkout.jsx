@@ -53,9 +53,8 @@ const Checkout = () => {
             };
             const response = await axios.post("http://localhost:5555/api/orders", orderData);
             if (response.status === 201) {
-                alert("Order placed successfully!");
                 clearCart();
-                navigate('/orders');
+                navigate('/order-success', { state: { orderData } });
             }
         } catch (error) {
             console.error("Error creating order", error);
