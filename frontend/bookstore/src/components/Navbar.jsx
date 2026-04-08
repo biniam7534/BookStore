@@ -46,7 +46,7 @@ const Navbar = () => {
 
                 <div className="nav-actions">
                     <div className="desktop-only action-btns">
-                        <button className="icon-btn cart-btn" onClick={() => navigate('/orders')}>
+                        <button className="icon-btn cart-btn" onClick={() => navigate('/cart')}>
                             <FiShoppingCart />
                             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
                         </button>
@@ -95,7 +95,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="sidebar-footer">
-                    <button className="sidebar-action-btn" onClick={() => { closeMenu(); navigate('/orders'); }}>
+                    <button className="sidebar-action-btn" onClick={() => { closeMenu(); navigate('/cart'); }}>
                         <div className="cart-icon-wrapper">
                             <FiShoppingCart />
                             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}

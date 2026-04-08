@@ -7,6 +7,7 @@ import About from './pages/About';
 import Books from './pages/Books';
 import Contact from './pages/Contact';
 import Orders from './pages/Orders';
+import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import OrderSuccess from './pages/OrderSuccess';
 import { CartProvider } from './context/CartContext';
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/books" element={<Books />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-success" element={<OrderSuccess />} />
           </Routes>

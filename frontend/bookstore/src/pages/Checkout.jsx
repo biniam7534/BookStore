@@ -65,7 +65,7 @@ const Checkout = () => {
     return (
         <div className="checkout-page">
             <div className="container" style={{ paddingBottom: '20px' }}>
-                <button className="back-btn" onClick={() => navigate('/orders')}>
+                <button className="back-btn" onClick={() => navigate('/cart')}>
                     <FiArrowLeft /> Back to Cart
                 </button>
             </div>
