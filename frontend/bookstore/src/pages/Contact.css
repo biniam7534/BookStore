@@ -200,11 +200,26 @@
     }
 
     .contact-title {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+    }
+
+    .contact-header {
+        padding: 50px 0 30px;
     }
 
     .contact-form-card,
     .contact-info-card {
-        padding: 24px;
+        padding: 20px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .info-card-title,
+    .form-card-title {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
     }
 }

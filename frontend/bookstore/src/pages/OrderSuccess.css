@@ -154,4 +154,16 @@
     .action-buttons {
         flex-direction: column;
     }
+
+    .success-card {
+        padding: 30px 20px;
+    }
+
+    .order-details-box {
+        padding: 20px;
+    }
+
+    .success-title {
+        font-size: 1.4rem;
+    }
 }

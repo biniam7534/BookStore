@@ -145,4 +145,18 @@
         padding-top: 10px;
         border-top: 1px dashed #e2e8f0;
     }
+
+    .order-card-header {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    .orders-history-page {
+        padding: 40px 0;
+    }
+
+    .orders-title {
+        font-size: 1.6rem;
+    }
 }

@@ -205,10 +205,44 @@
 
 @media (max-width: 640px) {
     .books-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
     .books-title {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+    }
+
+    .books-header {
+        padding-top: 40px;
+        padding-bottom: 24px;
+    }
+
+    .books-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+
+    .filters-row {
+        padding: 0;
+    }
+
+    .dropdown {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        gap: 6px;
+    }
+
+    .books-search-input {
+        padding: 16px 16px 16px 50px;
+        font-size: 0.95rem;
+    }
+
+    .book-info {
+        padding: 12px;
+    }
+
+    .book-title {
+        font-size: 0.95rem;
     }
 }
