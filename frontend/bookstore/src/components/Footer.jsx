@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiFacebook, FiTwitter, FiInstagram, FiGithub } from 'react-icons/fi';
+import { FiFacebook, FiLinkedin, FiInstagram, FiGithub } from 'react-icons/fi';
 import './Footer.css';
 
 const Footer = () => {
@@ -20,10 +20,10 @@ const Footer = () => {
                         Join our community of book lovers and discover your next favorite read.
                     </p>
                     <div className="social-links">
-                        <a href="#"><FiFacebook /></a>
-                        <a href="#"><FiTwitter /></a>
-                        <a href="#"><FiInstagram /></a>
-                        <a href="#"><FiGithub /></a>
+                        <a href="https://web.facebook.com/profile.php?id=61566450134550&rdid=7weqg1LXRSZuQq3y&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F19o1jPRNpq%2F%3F_rdc%3D1%26_rdr#" target="_blank" rel="noopener noreferrer"><FiFacebook /></a>
+                        <a href="https://www.linkedin.com/in/biniam-abu-a7a4b5395/" target="_blank" rel="noopener noreferrer"><FiLinkedin /></a>
+                        <a href="https://www.instagram.com/30_bin/" target="_blank" rel="noopener noreferrer"><FiInstagram /></a>
+                        <a href="https://github.com/biniam7534" target="_blank" rel="noopener noreferrer"><FiGithub /></a>
                     </div>
                 </div>
 
