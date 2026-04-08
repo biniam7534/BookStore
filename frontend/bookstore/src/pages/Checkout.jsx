@@ -3,6 +3,7 @@ import { FiArrowLeft, FiMapPin, FiCreditCard } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import API_BASE_URL from '../api';
 import './Checkout.css';
 
 const Checkout = () => {
@@ -57,7 +58,7 @@ const Checkout = () => {
                     quantity: item.quantity,
                 })),
             };
-            const response = await axios.post("http://localhost:5555/api/orders", orderData);
+            const response = await axios.post(`${API_BASE_URL}/api/orders`, orderData);
             if (response.status === 201) {
                 clearCart();
                 navigate('/order-success', { state: { orderData } });

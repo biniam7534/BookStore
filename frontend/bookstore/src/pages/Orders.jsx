@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FiPackage, FiCalendar, FiCreditCard } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../api';
 import './Orders.css';
 
 const Orders = () => {
@@ -12,7 +13,7 @@ const Orders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get("http://localhost:5555/api/orders");
+                const res = await axios.get(`${API_BASE_URL}/api/orders`);
                 if (res.data && res.data.data) {
                     setOrders(res.data.data);
                 } else if (Array.isArray(res.data)) {

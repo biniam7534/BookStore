@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: bookstore-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5555
+      - key: MONGO_URI
+        fromDatabase:
+          name: bookstore-db
+          property: connectionString
+      - key: NODE_ENV
+        value: production

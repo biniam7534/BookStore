@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FiChevronLeft, FiChevronRight, FiStar, FiShoppingCart } from 'react-icons/fi';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import API_BASE_URL from '../api';
 import './FeaturedBooks.css';
 
 import book1Img from '../assets/download.png'; // Correct book cover for Twilight Fortress
@@ -94,7 +95,7 @@ const FeaturedBooks = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const res = await axios.get("http://localhost:5555/api/books");
+                const res = await axios.get(`${API_BASE_URL}/api/books`);
                 if (res.data && res.data.data && res.data.data.length > 0) {
                     setFetchedFeatured(res.data.data.slice(0, 6)); // Display up to 6
                 }

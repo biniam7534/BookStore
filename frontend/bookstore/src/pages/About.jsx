@@ -30,28 +30,28 @@ const About = () => {
                         <div className="stat-icon-wrapper">
                             <FiAward className="stat-icon" />
                         </div>
-                        <h2 className="stat-value">0+</h2>
+                        <h2 className="stat-value">4+</h2>
                         <p className="stat-name">Awards Won</p>
                     </div>
                     <div className="stat-card fade-in">
                         <div className="stat-icon-wrapper">
                             <FiUsers className="stat-icon" />
                         </div>
-                        <h2 className="stat-value">0+</h2>
+                        <h2 className="stat-value">24+</h2>
                         <p className="stat-name">Active Readers</p>
                     </div>
                     <div className="stat-card fade-in">
                         <div className="stat-icon-wrapper">
                             <FiBookOpen className="stat-icon" />
                         </div>
-                        <h2 className="stat-value">0+</h2>
+                        <h2 className="stat-value">25+</h2>
                         <p className="stat-name">Books Available</p>
                     </div>
                     <div className="stat-card fade-in">
                         <div className="stat-icon-wrapper">
                             <FiStar className="stat-icon" />
                         </div>
-                        <h2 className="stat-value">0+</h2>
+                        <h2 className="stat-value">3.1+</h2>
                         <p className="stat-name">Average Rating</p>
                     </div>
                 </div>

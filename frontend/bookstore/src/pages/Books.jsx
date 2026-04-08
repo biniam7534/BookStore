@@ -3,6 +3,7 @@ import { FiSearch, FiFilter, FiChevronDown, FiShoppingCart } from 'react-icons/f
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import API_BASE_URL from '../api';
 import './Books.css';
 
 import adfressImg from '../assets/adfress.jpg';
@@ -190,7 +191,7 @@ const Books = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const res = await axios.get("http://localhost:5555/api/books");
+                const res = await axios.get(`${API_BASE_URL}/api/books`);
                 if (res.data && res.data.data && res.data.data.length > 0) {
                     setFetchedBooks(res.data.data);
                 }

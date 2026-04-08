@@ -3,6 +3,7 @@ import { FiSearch } from 'react-icons/fi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { featuredBooks } from './FeaturedBooks';
+import API_BASE_URL from '../api';
 import './Hero.css';
 
 const Hero = () => {
@@ -18,7 +19,7 @@ const Hero = () => {
     React.useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const res = await axios.get("http://localhost:5555/api/books");
+                const res = await axios.get(`${API_BASE_URL}/api/books`);
 
                 let dbBooks = [];
                 if (res.data && res.data.data) {
