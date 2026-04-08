@@ -31,6 +31,9 @@ const Books = () => {
     const initialSearch = queryParams.get('search') || '';
 
     const [searchTerm, setSearchTerm] = useState(initialSearch);
+    const [selectedGenre, setSelectedGenre] = useState('');
+    const [selectedAuthor, setSelectedAuthor] = useState('');
+    const [sortBy, setSortBy] = useState('');
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get('search');
@@ -183,13 +186,28 @@ const Books = () => {
 
     const displayBooks = fetchedBooks.length > 0 ? fetchedBooks : books;
 
-    // Apply search filter
-    const filteredBooks = displayBooks.filter(book =>
-        (book.title && book.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (book.author && book.author.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (book.category && book.category.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (book.description && book.description.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
+    const genres = [...new Set(displayBooks.map(book => book.category || 'General'))];
+    const authors = [...new Set(displayBooks.map(book => book.author))].filter(Boolean);
+
+    // Apply search filter and dropdown filters
+    let filteredBooks = displayBooks.filter(book => {
+        const matchesSearch =
+            (book.title && book.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+            (book.author && book.author.toLowerCase().includes(searchTerm.toLowerCase())) ||
+            (book.category && book.category.toLowerCase().includes(searchTerm.toLowerCase())) ||
+            (book.description && book.description.toLowerCase().includes(searchTerm.toLowerCase()));
+
+        const matchesGenre = selectedGenre ? (book.category || 'General') === selectedGenre : true;
+        const matchesAuthor = selectedAuthor ? book.author === selectedAuthor : true;
+
+        return matchesSearch && matchesGenre && matchesAuthor;
+    });
+
+    if (sortBy === 'title-asc') {
+        filteredBooks.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+    } else if (sortBy === 'title-desc') {
+        filteredBooks.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
+    }
 
     return (
         <div className="books-page">
@@ -212,14 +230,36 @@ const Books = () => {
 
                         <div className="filters-row">
                             <div className="filter-dropdowns">
-                                <div className="dropdown">
-                                    <span>All Genres</span>
-                                    <FiChevronDown />
-                                </div>
-                                <div className="dropdown">
-                                    <span>Sort by Title</span>
-                                    <FiChevronDown />
-                                </div>
+                                <select
+                                    className="dropdown"
+                                    value={selectedGenre}
+                                    onChange={(e) => setSelectedGenre(e.target.value)}
+                                    style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
+                                >
+                                    <option value="">All Topics</option>
+                                    {genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
+                                </select>
+
+                                <select
+                                    className="dropdown"
+                                    value={selectedAuthor}
+                                    onChange={(e) => setSelectedAuthor(e.target.value)}
+                                    style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
+                                >
+                                    <option value="">All Authors</option>
+                                    {authors.map(author => <option key={author} value={author}>{author}</option>)}
+                                </select>
+
+                                <select
+                                    className="dropdown"
+                                    value={sortBy}
+                                    onChange={(e) => setSortBy(e.target.value)}
+                                    style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
+                                >
+                                    <option value="">Sort by Title</option>
+                                    <option value="title-asc">Title: A to Z</option>
+                                    <option value="title-desc">Title: Z to A</option>
+                                </select>
                             </div>
                             <div className="results-count">
                                 Showing {filteredBooks.length} results
