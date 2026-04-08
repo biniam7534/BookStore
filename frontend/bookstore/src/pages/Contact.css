@@ -134,7 +134,8 @@
 .input-wrapper input,
 .input-wrapper textarea {
     width: 100%;
-    padding: 14px 16px 14px 52px;
+    padding: 14px 16px;
+    /* Base padding for all inputs */
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     font-family: inherit;
@@ -143,15 +144,16 @@
     transition: 0.3s;
 }
 
+/* Specific padding for inputs that have an icon */
+.input-wrapper.with-icon input,
+.input-wrapper.with-icon textarea {
+    padding-left: 52px;
+}
+
 .input-wrapper input:focus,
 .input-wrapper textarea:focus {
     border-color: #0d9488;
     box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.05);
-}
-
-/* Special Case for Input without Icon */
-.input-wrapper input:only-child {
-    padding-left: 16px;
 }
 
 .textarea-wrapper {

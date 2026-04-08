@@ -107,7 +107,7 @@ const Contact = () => {
                             <div className="form-row">
                                 <div className="form-group">
                                     <label>Name*</label>
-                                    <div className="input-wrapper">
+                                    <div className="input-wrapper with-icon">
                                         <FiUser className="input-icon" />
                                         <input
                                             type="text"
@@ -121,7 +121,7 @@ const Contact = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Email*</label>
-                                    <div className="input-wrapper">
+                                    <div className="input-wrapper with-icon">
                                         <FiMail className="input-icon" />
                                         <input
                                             type="email"
@@ -138,7 +138,7 @@ const Contact = () => {
                             <div className="form-row">
                                 <div className="form-group">
                                     <label>Phone (optional)</label>
-                                    <div className="input-wrapper">
+                                    <div className="input-wrapper with-icon">
                                         <FiPhone className="input-icon" />
                                         <input
                                             type="tel"
@@ -165,7 +165,7 @@ const Contact = () => {
 
                             <div className="form-group">
                                 <label>Message *</label>
-                                <div className="input-wrapper textarea-wrapper">
+                                <div className="input-wrapper textarea-wrapper with-icon">
                                     <FiMessageSquare className="input-icon" />
                                     <textarea
                                         name="message"
