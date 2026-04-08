@@ -16,25 +16,9 @@ const Orders = () => {
     const tax = subtotal * 0.15; // 15% mock tax
     const totalAmount = subtotal + tax;
 
-    const handleCheckout = async () => {
+    const handleCheckout = () => {
         if (cartItems.length === 0) return;
-        try {
-            const orderData = {
-                orderId: `ORD-${Math.floor(Math.random() * 1000000)}`,
-                date: new Date().toISOString().split('T')[0],
-                amount: totalAmount.toFixed(2),
-                payment: "Card",
-                status: "Processing"
-            };
-            const response = await axios.post("http://localhost:5555/api/orders", orderData);
-            if (response.status === 201) {
-                alert("Order created successfully!");
-                clearCart();
-            }
-        } catch (error) {
-            console.error("Error creating order", error);
-            alert("Failed to place order.");
-        }
+        navigate('/checkout');
     };
 
     return (

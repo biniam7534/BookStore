@@ -7,6 +7,7 @@ import About from './pages/About';
 import Books from './pages/Books';
 import Contact from './pages/Contact';
 import Orders from './pages/Orders';
+import Checkout from './pages/Checkout';
 import { CartProvider } from './context/CartContext';
 import './App.css';
 
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/books" element={<Books />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </div>
         <Footer />
