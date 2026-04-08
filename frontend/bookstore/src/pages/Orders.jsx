@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FiPackage, FiCalendar, FiCreditCard } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import './Orders.css';
 
 const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -42,6 +44,23 @@ const Orders = () => {
                         <FiPackage className="empty-icon" />
                         <h2>No orders found</h2>
                         <p>You haven't placed any orders yet.</p>
+                        <button
+                            className="continue-btn"
+                            onClick={() => navigate('/books')}
+                            style={{
+                                marginTop: '20px',
+                                padding: '12px 24px',
+                                borderRadius: '8px',
+                                fontWeight: '600',
+                                backgroundColor: '#0d9488',
+                                color: 'white',
+                                border: 'none',
+                                cursor: 'pointer',
+                                boxShadow: '0 4px 6px rgba(13, 148, 136, 0.2)'
+                            }}
+                        >
+                            Continue Shopping
+                        </button>
                     </div>
                 ) : (
                     <div className="orders-list fade-in">
@@ -71,6 +90,24 @@ const Orders = () => {
                                 </div>
                             </div>
                         ))}
+
+                        <div className="continue-shopping-wrapper" style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+                            <button
+                                onClick={() => navigate('/books')}
+                                style={{
+                                    padding: '12px 24px',
+                                    borderRadius: '8px',
+                                    fontWeight: '600',
+                                    backgroundColor: '#0d9488',
+                                    color: 'white',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    boxShadow: '0 4px 6px rgba(13, 148, 136, 0.2)'
+                                }}
+                            >
+                                Continue Shopping
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
