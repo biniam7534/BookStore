@@ -1,8 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiMapPin, FiMail, FiPhone, FiUser, FiMessageSquare, FiSend } from 'react-icons/fi';
+import axios from 'axios';
+import API_BASE_URL from '../api';
 import './Contact.css';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            // 1. Save to database
+            await axios.post(`${API_BASE_URL}/api/contacts`, formData);
+
+            // 2. Prepare WhatsApp message
+            const targetPhoneNumber = "251975346904";
+            const text = `*New Contact Inquiry from BookShell*%0A%0A` +
+                `*Name:* ${formData.name}%0A` +
+                `*Email:* ${formData.email}%0A` +
+                `*Phone:* ${formData.phone || 'N/A'}%0A` +
+                `*Subject:* ${formData.subject || 'General Inquiry'}%0A%0A` +
+                `*Message:*%0A${formData.message}`;
+
+            // 3. Open WhatsApp
+            window.open(`https://wa.me/${targetPhoneNumber}?text=${text}`, '_blank');
+
+            // 4. Clear form
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: ''
+            });
+
+            alert("Message sent successfully!");
+        } catch (error) {
+            console.error("Error sending message:", error);
+            alert("Failed to send message. Please try again.");
+        }
+    };
+
     return (
         <div className="contact-page">
             <section className="contact-header section-padding">
@@ -53,20 +103,34 @@ const Contact = () => {
                     <div className="contact-form-card fade-in">
                         <h2 className="form-card-title">Send us a message via WhatsApp</h2>
 
-                        <form className="contact-form">
+                        <form className="contact-form" onSubmit={handleSubmit}>
                             <div className="form-row">
                                 <div className="form-group">
                                     <label>Name*</label>
                                     <div className="input-wrapper">
                                         <FiUser className="input-icon" />
-                                        <input type="text" placeholder="       Your Name" required />
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            placeholder="       Your Name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label>Email*</label>
                                     <div className="input-wrapper">
                                         <FiMail className="input-icon" />
-                                        <input type="email" placeholder="       Your Email" required />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder="       Your Email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -76,13 +140,25 @@ const Contact = () => {
                                     <label>Phone (optional)</label>
                                     <div className="input-wrapper">
                                         <FiPhone className="input-icon" />
-                                        <input type="tel" placeholder="       Your Phone" />
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            placeholder="       Your Phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label>Subject (optional)</label>
                                     <div className="input-wrapper">
-                                        <input type="text" placeholder="Subject" />
+                                        <input
+                                            type="text"
+                                            name="subject"
+                                            placeholder="Subject"
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -91,11 +167,17 @@ const Contact = () => {
                                 <label>Message *</label>
                                 <div className="input-wrapper textarea-wrapper">
                                     <FiMessageSquare className="input-icon" />
-                                    <textarea placeholder="Tell us more about your inquiry..." required></textarea>
+                                    <textarea
+                                        name="message"
+                                        placeholder="Tell us more about your inquiry..."
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
+                                    ></textarea>
                                 </div>
                             </div>
 
-                            <button type="submit" className="submit-btn">
+                            <button type="submit" className="submit-btn" style={{ cursor: 'pointer' }}>
                                 <FiSend /> Send via WhatsApp
                             </button>
                         </form>
