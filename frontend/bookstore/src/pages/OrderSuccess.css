@@ -166,4 +166,37 @@
     .success-title {
         font-size: 1.4rem;
     }
+
+    .continue-btn,
+    .view-details-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+.receipt-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    font-size: 0.88rem;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.receipt-hint-icon {
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.continue-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
 }

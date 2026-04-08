@@ -49,7 +49,13 @@ const Checkout = () => {
                 amount: totalAmount.toFixed(2),
                 payment: formData.paymentMethod,
                 status: "Processing",
-                customerDetails: formData
+                customerDetails: formData,
+                items: cartItems.map(item => ({
+                    title: item.title,
+                    author: item.author,
+                    price: item.price || 0,
+                    quantity: item.quantity,
+                })),
             };
             const response = await axios.post("http://localhost:5555/api/orders", orderData);
             if (response.status === 201) {
