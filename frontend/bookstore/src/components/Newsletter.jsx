@@ -3,6 +3,16 @@ import { FiSend } from 'react-icons/fi';
 import './Newsletter.css';
 
 const Newsletter = () => {
+    const [email, setEmail] = React.useState('');
+
+    const handleSubscribe = (e) => {
+        e.preventDefault();
+        if (email) {
+            alert(`Thank you for subscribing with ${email}!`);
+            setEmail('');
+        }
+    };
+
     return (
         <section className="newsletter-section">
             <div className="container">
@@ -14,11 +24,14 @@ const Newsletter = () => {
                             exclusive discounts, and literary events.
                         </p>
                     </div>
-                    <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+                    <form className="newsletter-form" onSubmit={handleSubscribe}>
                         <input
                             type="email"
                             placeholder="Your email address"
                             className="newsletter-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                         <button type="submit" className="newsletter-btn">
                             <FiSend /> Subscribe
