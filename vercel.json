@@ -6,8 +6,12 @@
             "destination": "/backend/server.js"
         },
         {
+            "source": "/assets/(.*)",
+            "destination": "/frontend/bookstore/dist/assets/$1"
+        },
+        {
             "source": "/(.*)",
-            "destination": "/frontend/bookstore/index.html"
+            "destination": "/frontend/bookstore/dist/index.html"
         }
     ],
     "functions": {

@@ -1,0 +1,9 @@
+{
+    "name": "bookstore-monorepo",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build": "npm install --prefix frontend/bookstore && npm run build --prefix frontend/bookstore",
+        "install-backend": "npm install --prefix backend"
+    }
+}

@@ -1,0 +1,5 @@
+node_modules
+backend/node_modules
+frontend/bookstore/node_modules
+frontend/bookstore/dist
+.git
