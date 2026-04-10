@@ -38,13 +38,20 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: "Welcome to the BookStore API" });
 });
 
+// Lazy database connection middleware
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (err) {
+        res.status(500).json({ error: "Database connection failed" });
+    }
+});
+
 // API Routes
 app.use("/api/books", bookRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/contacts", contactRoutes);
-
-// Connect to database
-connectDB();
 
 // Only listen if not in a serverless environment
 if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {

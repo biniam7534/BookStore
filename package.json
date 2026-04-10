@@ -2,8 +2,11 @@
     "name": "bookstore-monorepo",
     "version": "1.0.0",
     "private": true,
+    "workspaces": [
+        "frontend/bookstore",
+        "backend"
+    ],
     "scripts": {
-        "build": "npm install --prefix frontend/bookstore && npm run build --prefix frontend/bookstore",
-        "install-backend": "npm install --prefix backend"
+        "build": "npm run build --workspace=frontend/bookstore"
     }
 }

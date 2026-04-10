@@ -8,6 +8,10 @@ const connectDB = async () => {
             process.exit(1);
         }
 
+        if (mongoose.connection.readyState >= 1) {
+            return;
+        }
+
         console.log("⏳ Attempting to connect to MongoDB Atlas...");
         const conn = await mongoose.connect(uri);
         console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
