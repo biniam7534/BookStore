@@ -43,9 +43,14 @@ app.use("/api/books", bookRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/contacts", contactRoutes);
 
-// Connect to database and start server
-connectDB().then(() => {
+// Connect to database
+connectDB();
+
+// Only listen if not in a serverless environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
-});
+}
+
+export default app;
